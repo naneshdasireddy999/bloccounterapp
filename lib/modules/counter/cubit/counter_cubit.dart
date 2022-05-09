@@ -9,6 +9,7 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterInitial());
   var mycount = Counter(count: 0);
   Future<void> fetchcount() async {
+    print('sull');
     var ncount = await RemoteServices.fetchcount();
     if (ncount != null) {
       mycount = ncount;

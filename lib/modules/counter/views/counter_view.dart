@@ -2,13 +2,23 @@ import 'package:bloccounterapp/modules/counter/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Counters extends StatelessWidget {
+class Counters extends StatefulWidget {
   const Counters({Key? key}) : super(key: key);
+
+  @override
+  State<Counters> createState() => _CountersState();
+}
+
+class _CountersState extends State<Counters> {
+  var x = true;
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.watch<CounterCubit>();
-    cubit.fetchcount();
+    if (x == true) {
+      cubit.fetchcount();
+      x = false;
+    }
 
     return BlocListener(
       bloc: cubit,
